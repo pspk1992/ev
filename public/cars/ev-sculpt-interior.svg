@@ -1,0 +1,24 @@
+<svg width="1600" height="960" viewBox="0 0 1600 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="960" rx="48" fill="url(#bg)"/>
+  <rect x="176" y="128" width="1248" height="704" rx="42" fill="#0F1E29"/>
+  <rect x="240" y="188" width="1120" height="108" rx="26" fill="#203747"/>
+  <rect x="308" y="232" width="412" height="20" rx="10" fill="#D8F4FF" fill-opacity="0.8"/>
+  <rect x="240" y="342" width="494" height="374" rx="34" fill="#152836"/>
+  <rect x="866" y="342" width="494" height="374" rx="34" fill="#152836"/>
+  <rect x="766" y="342" width="68" height="374" rx="28" fill="#1C3343"/>
+  <path d="M376 436C376 394 410 360 452 360H524C566 360 600 394 600 436V622H376V436Z" fill="url(#seat)"/>
+  <path d="M1000 436C1000 394 1034 360 1076 360H1148C1190 360 1224 394 1224 436V622H1000V436Z" fill="url(#seat)"/>
+  <rect x="706" y="384" width="188" height="122" rx="28" fill="#6FC6DD" fill-opacity="0.9"/>
+  <rect x="688" y="540" width="224" height="42" rx="21" fill="#CFEAF4" fill-opacity="0.7"/>
+  <circle cx="800" cy="676" r="38" fill="#D9F7FF" fill-opacity="0.85"/>
+  <defs>
+    <linearGradient id="bg" x1="128" y1="116" x2="1438" y2="846" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FAFBFD"/>
+      <stop offset="1" stop-color="#D7E7F0"/>
+    </linearGradient>
+    <linearGradient id="seat" x1="456" y1="360" x2="1144" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#29495D"/>
+      <stop offset="1" stop-color="#86C8D6"/>
+    </linearGradient>
+  </defs>
+</svg>

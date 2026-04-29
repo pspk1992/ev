@@ -1,0 +1,661 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-body: "Manrope", sans-serif;
+    --font-display: "Syne", sans-serif;
+
+    --background: 210 35% 97%;
+    --foreground: 210 32% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 32% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 32% 12%;
+
+    --primary: 195 78% 33%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 206 28% 91%;
+    --secondary-foreground: 210 32% 12%;
+
+    --muted: 205 24% 92%;
+    --muted-foreground: 212 15% 40%;
+
+    --accent: 47 92% 63%;
+    --accent-foreground: 210 34% 13%;
+
+    --destructive: 2 80% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 205 24% 84%;
+    --input: 205 24% 84%;
+    --ring: 195 78% 33%;
+
+    --hero: 192 64% 79%;
+    --panel: 0 0% 100%;
+    --line: 205 22% 80%;
+    --overlay: 210 32% 12%;
+
+    --radius: 1.25rem;
+
+    --gradient-hero: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--primary)) 42%, hsl(var(--hero)) 100%);
+    --gradient-panel: linear-gradient(180deg, hsl(var(--card) / 0.96), hsl(var(--secondary) / 0.92));
+    --gradient-glow: radial-gradient(circle at top, hsl(var(--hero) / 0.55), transparent 60%);
+    --shadow-premium: 0 22px 80px -30px hsl(var(--foreground) / 0.3);
+    --shadow-soft: 0 16px 40px -28px hsl(var(--foreground) / 0.2);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 210 36% 8%;
+    --foreground: 204 40% 96%;
+
+    --card: 211 31% 11%;
+    --card-foreground: 204 40% 96%;
+
+    --popover: 211 31% 11%;
+    --popover-foreground: 204 40% 96%;
+
+    --primary: 192 87% 67%;
+    --primary-foreground: 210 38% 10%;
+
+    --secondary: 211 24% 17%;
+    --secondary-foreground: 204 40% 96%;
+
+    --muted: 212 22% 16%;
+    --muted-foreground: 210 18% 70%;
+
+    --accent: 47 96% 66%;
+    --accent-foreground: 210 38% 10%;
+
+    --destructive: 2 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 213 18% 22%;
+    --input: 213 18% 22%;
+    --ring: 192 87% 67%;
+
+    --hero: 195 71% 30%;
+    --panel: 211 31% 11%;
+    --line: 213 18% 22%;
+    --overlay: 210 24% 4%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(210 36% 10%) 0%, hsl(var(--primary) / 0.92) 38%, hsl(var(--accent) / 0.88) 100%);
+    --gradient-panel: linear-gradient(180deg, hsl(var(--card) / 0.96), hsl(212 24% 13% / 0.94));
+    --gradient-glow: radial-gradient(circle at top, hsl(var(--primary) / 0.28), transparent 60%);
+    --shadow-premium: 0 24px 80px -28px hsl(210 24% 4% / 0.7);
+    --shadow-soft: 0 18px 44px -26px hsl(210 24% 4% / 0.55);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, hsl(var(--hero) / 0.18), transparent 30%),
+      radial-gradient(circle at 80% 12%, hsl(var(--accent) / 0.14), transparent 24%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary) / 0.55));
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply container py-16 md:py-20;
+  }
+
+  .glass-panel {
+    @apply rounded-[calc(var(--radius)+0.5rem)] border border-line/70 bg-panel/85 shadow-premium backdrop-blur-xl;
+  }
+
+  .data-card {
+    @apply rounded-xl border border-line/70 bg-card/80 shadow-soft backdrop-blur-sm;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-line/70 bg-card/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground;
+  }
+
+  .field-label {
+    @apply mb-2 block text-sm font-semibold text-foreground;
+  }
+
+  .field-input {
+    @apply w-full rounded-xl border border-input bg-background/80 px-4 py-3 text-sm text-foreground outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/20;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .footer-drive {
+    background:
+      linear-gradient(180deg, transparent, hsl(var(--hero) / 0.12)),
+      linear-gradient(90deg, hsl(var(--background) / 0.2), hsl(var(--card) / 0.8), hsl(var(--background) / 0.2));
+  }
+
+  .footer-drive__glow {
+    position: absolute;
+    inset: auto 0 0;
+    height: 100%;
+    background:
+      radial-gradient(circle at 20% 100%, hsl(var(--accent) / 0.12), transparent 28%),
+      radial-gradient(circle at 80% 0%, hsl(var(--primary) / 0.14), transparent 34%);
+    pointer-events: none;
+  }
+
+  .footer-drive__scene {
+    position: relative;
+    height: 12rem;
+    overflow: hidden;
+    border-radius: calc(var(--radius) + 0.25rem);
+    border: 1px solid hsl(var(--line) / 0.7);
+    background:
+      linear-gradient(180deg, hsl(196 74% 88%) 0%, hsl(198 52% 75%) 43%, hsl(161 26% 63%) 44%, hsl(169 20% 58%) 64%, hsl(192 52% 48%) 64%, hsl(194 57% 44%) 76%, hsl(214 13% 26%) 76%, hsl(214 18% 18%) 100%);
+    box-shadow:
+      inset 0 -14px 32px hsl(var(--foreground) / 0.12),
+      0 20px 40px -28px hsl(var(--foreground) / 0.32);
+  }
+
+  .footer-drive__sky,
+  .footer-drive__mountains,
+  .footer-drive__forest,
+  .footer-drive__river,
+  .footer-drive__road {
+    position: absolute;
+    inset-inline: 0;
+  }
+
+  .footer-drive__sky {
+    inset-block: 0 43%;
+  }
+
+  .footer-drive__sun {
+    position: absolute;
+    top: 1rem;
+    right: 10%;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: radial-gradient(circle, hsl(52 100% 88%) 0%, hsl(45 100% 68%) 58%, hsl(35 100% 65% / 0) 72%);
+    box-shadow: 0 0 50px hsl(45 100% 68% / 0.55);
+  }
+
+  .footer-drive__cloud {
+    position: absolute;
+    height: 1.25rem;
+    border-radius: 999px;
+    background: hsl(0 0% 100% / 0.6);
+    filter: blur(0.5px);
+  }
+
+  .footer-drive__cloud::before,
+  .footer-drive__cloud::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    border-radius: 999px;
+    background: inherit;
+  }
+
+  .footer-drive__cloud::before {
+    left: 0.8rem;
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  .footer-drive__cloud::after {
+    right: 0.8rem;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .footer-drive__cloud--one {
+    top: 1.6rem;
+    left: 10%;
+    width: 5.5rem;
+    animation: footer-drive-cloud 20s linear infinite;
+  }
+
+  .footer-drive__cloud--two {
+    top: 0.9rem;
+    left: 44%;
+    width: 4.75rem;
+    opacity: 0.8;
+    animation: footer-drive-cloud 26s linear infinite reverse;
+  }
+
+  .footer-drive__birds {
+    position: absolute;
+    top: 1rem;
+    left: 28%;
+    display: flex;
+    gap: 0.5rem;
+    animation: footer-drive-birds 12s linear infinite;
+  }
+
+  .footer-drive__birds span {
+    width: 0.85rem;
+    height: 0.45rem;
+    border-top: 2px solid hsl(var(--foreground) / 0.55);
+    border-radius: 999px 999px 0 0;
+    transform: rotate(8deg);
+  }
+
+  .footer-drive__mountains {
+    inset-block: 1.9rem 3.8rem;
+  }
+
+  .footer-drive__mountain {
+    position: absolute;
+    bottom: 0;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  }
+
+  .footer-drive__mountain--back {
+    background: linear-gradient(180deg, hsl(194 36% 58%), hsl(187 24% 44%));
+    opacity: 0.72;
+  }
+
+  .footer-drive__mountain--front {
+    background: linear-gradient(180deg, hsl(169 29% 44%), hsl(164 31% 34%));
+  }
+
+  .footer-drive__mountain--one {
+    left: -2%;
+    width: 24%;
+    height: 80%;
+  }
+
+  .footer-drive__mountain--two {
+    left: 16%;
+    width: 28%;
+    height: 95%;
+  }
+
+  .footer-drive__mountain--three {
+    right: 18%;
+    width: 30%;
+    height: 92%;
+  }
+
+  .footer-drive__mountain--four {
+    right: -4%;
+    width: 24%;
+    height: 70%;
+  }
+
+  .footer-drive__forest {
+    inset-block: 4.4rem 4rem;
+  }
+
+  .footer-drive__tree {
+    position: absolute;
+    bottom: 0;
+    width: 1rem;
+    height: 2.4rem;
+    background: linear-gradient(180deg, hsl(145 44% 34%), hsl(150 49% 23%));
+    clip-path: polygon(50% 0%, 88% 32%, 70% 32%, 100% 68%, 60% 68%, 78% 100%, 22% 100%, 40% 68%, 0% 68%, 30% 32%, 12% 32%);
+    filter: drop-shadow(0 4px 8px hsl(145 35% 18% / 0.35));
+  }
+
+  .footer-drive__tree::after {
+    content: "";
+    position: absolute;
+    left: 46%;
+    bottom: -0.45rem;
+    width: 0.18rem;
+    height: 0.6rem;
+    background: hsl(26 37% 29%);
+  }
+
+  .footer-drive__tree--one { left: 7%; }
+  .footer-drive__tree--two { left: 20%; transform: scale(0.88); }
+  .footer-drive__tree--three { left: 35%; transform: scale(1.08); }
+  .footer-drive__tree--four { right: 28%; transform: scale(0.94); }
+  .footer-drive__tree--five { right: 16%; transform: scale(1.14); }
+  .footer-drive__tree--six { right: 6%; transform: scale(0.86); }
+
+  .footer-drive__river {
+    inset-block: 8rem 2.5rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, hsl(195 68% 52%), hsl(201 72% 41%));
+  }
+
+  .footer-drive__river::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.2), transparent),
+      repeating-linear-gradient(90deg, transparent 0 3rem, hsl(0 0% 100% / 0.09) 3rem 4rem);
+  }
+
+  .footer-drive__river-shine {
+    position: absolute;
+    inset: 35% -20% auto;
+    height: 0.15rem;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.9), transparent);
+    animation: footer-drive-water 5s linear infinite;
+  }
+
+  .footer-drive__animals {
+    position: absolute;
+    left: -12%;
+    bottom: 0.7rem;
+    width: 15rem;
+    height: 2.25rem;
+    animation: footer-drive-animals 17s linear infinite;
+  }
+
+  .footer-drive__animal {
+    position: absolute;
+    bottom: 0;
+    width: 2.7rem;
+    height: 1.6rem;
+    color: hsl(28 28% 20%);
+  }
+
+  .footer-drive__animal--small {
+    left: 3rem;
+    bottom: 0.15rem;
+    transform: scale(0.78);
+    opacity: 0.9;
+  }
+
+  .footer-drive__animal-body,
+  .footer-drive__animal-head,
+  .footer-drive__animal-leg {
+    position: absolute;
+    background: currentColor;
+  }
+
+  .footer-drive__animal-body {
+    left: 0.35rem;
+    bottom: 0.45rem;
+    width: 1.45rem;
+    height: 0.6rem;
+    border-radius: 999px 0.7rem 0.7rem 999px;
+  }
+
+  .footer-drive__animal-head {
+    right: 0.28rem;
+    bottom: 0.82rem;
+    width: 0.52rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    box-shadow:
+      -0.05rem -0.2rem 0 0 currentColor,
+      0.15rem -0.25rem 0 0 currentColor;
+  }
+
+  .footer-drive__animal-leg {
+    bottom: 0;
+    width: 0.1rem;
+    height: 0.65rem;
+    transform-origin: top center;
+    animation: footer-drive-legs 0.6s ease-in-out infinite alternate;
+  }
+
+  .footer-drive__animal-leg--one { left: 0.55rem; }
+  .footer-drive__animal-leg--two { left: 0.95rem; animation-delay: 0.15s; }
+  .footer-drive__animal-leg--three { left: 1.35rem; animation-delay: 0.3s; }
+  .footer-drive__animal-leg--four { left: 1.7rem; animation-delay: 0.45s; }
+
+  .footer-drive__road {
+    inset-block: auto 0;
+    height: 2.9rem;
+    background: linear-gradient(180deg, hsl(214 10% 29%), hsl(214 14% 17%));
+  }
+
+  .footer-drive__lane-markers {
+    position: absolute;
+    inset: 0 0 auto;
+    top: 0.7rem;
+    height: 0.22rem;
+    background-image: linear-gradient(
+      90deg,
+      transparent 0 4%,
+      hsl(var(--accent) / 0.95) 4% 12%,
+      transparent 12% 20%
+    );
+    background-size: 11rem 100%;
+    animation: footer-drive-markers 4s linear infinite;
+    opacity: 0.92;
+  }
+
+  .footer-drive__car {
+    position: absolute;
+    bottom: 0.6rem;
+    left: 0;
+    width: clamp(10rem, 18vw, 13rem);
+    animation: footer-drive-car 14s linear infinite;
+    will-change: transform;
+  }
+
+  .footer-drive__car-shadow {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 0.15rem;
+    height: 0.7rem;
+    border-radius: 999px;
+    background: hsl(210 24% 4% / 0.22);
+    filter: blur(6px);
+  }
+
+  .footer-drive__car-svg {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 12px hsl(var(--foreground) / 0.14));
+  }
+
+  .footer-drive__light {
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .footer-drive__light--head {
+    top: 41%;
+    right: -2%;
+    width: 16%;
+    height: 12%;
+    background: radial-gradient(circle, hsl(48 100% 88% / 0.98) 0%, hsl(43 100% 70% / 0.9) 45%, transparent 72%);
+    box-shadow:
+      0 0 10px hsl(48 100% 80% / 0.9),
+      0 0 24px hsl(43 100% 62% / 0.7),
+      18px 0 34px hsl(46 100% 72% / 0.5);
+    animation: footer-drive-headlight 1.8s ease-in-out infinite;
+  }
+
+  .footer-drive__light--tail {
+    top: 46%;
+    left: 7%;
+    width: 9%;
+    height: 8%;
+    background: radial-gradient(circle, hsl(0 100% 86% / 0.95) 0%, hsl(2 88% 60% / 0.9) 48%, transparent 75%);
+    box-shadow:
+      0 0 8px hsl(2 88% 60% / 0.85),
+      -10px 0 20px hsl(2 88% 60% / 0.45);
+    animation: footer-drive-taillight 2.2s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+@keyframes footer-drive-car {
+  0% {
+    transform: translateX(calc(-100% - 2rem));
+  }
+
+  100% {
+    transform: translateX(calc(100vw + 2rem));
+  }
+}
+
+@keyframes footer-drive-markers {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -11rem 0;
+  }
+}
+
+@keyframes footer-drive-cloud {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(2rem);
+  }
+}
+
+@keyframes footer-drive-birds {
+  0% {
+    transform: translateX(-2rem) translateY(0);
+  }
+
+  50% {
+    transform: translateX(3rem) translateY(-0.35rem);
+  }
+
+  100% {
+    transform: translateX(8rem) translateY(0);
+  }
+}
+
+@keyframes footer-drive-water {
+  from {
+    transform: translateX(-20%);
+  }
+
+  to {
+    transform: translateX(20%);
+  }
+}
+
+@keyframes footer-drive-animals {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(100vw + 18rem));
+  }
+}
+
+@keyframes footer-drive-legs {
+  from {
+    transform: rotate(10deg);
+  }
+
+  to {
+    transform: rotate(-12deg);
+  }
+}
+
+@keyframes footer-drive-headlight {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes footer-drive-taillight {
+  0%,
+  72%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.94);
+  }
+
+  76%,
+  88% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-drive__car {
+    animation: none;
+    transform: translateX(0);
+  }
+
+  .footer-drive__lane-markers,
+  .footer-drive__cloud--one,
+  .footer-drive__cloud--two,
+  .footer-drive__birds,
+  .footer-drive__river-shine,
+  .footer-drive__animals,
+  .footer-drive__light--head,
+  .footer-drive__light--tail {
+    animation: none;
+  }
+}
